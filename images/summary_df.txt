@@ -1,0 +1,290 @@
+'data.frame':	686 obs. of  10 variables:
+ $ horTh   : Factor w/ 2 levels "no","yes": 1 2 2 2 1 1 2 1 1 1 ...
+ $ age     : int  70 56 58 59 73 32 59 65 80 66 ...
+ $ menostat: Factor w/ 2 levels "Pre","Post": 2 2 2 2 2 1 2 2 2 2 ...
+ $ tsize   : int  21 12 35 17 35 57 8 16 39 18 ...
+ $ tgrade  : Ord.factor w/ 3 levels "I"<"II"<"III": 2 2 2 2 2 3 2 2 2 2 ...
+ $ pnodes  : int  3 7 9 4 1 24 2 1 30 7 ...
+ $ progrec : int  48 61 52 60 26 0 181 192 0 0 ...
+ $ estrec  : int  66 77 271 29 65 13 0 25 59 3 ...
+ $ time    : int  1814 2018 712 1807 772 448 2172 2161 471 2014 ...
+ $ cens    : int  1 1 1 1 1 1 0 0 1 0 ...
+ horTh          age        menostat       tsize        tgrade        pnodes         progrec      
+ no :440   Min.   :21.00   Pre :290   Min.   :  3.00   I  : 81   Min.   : 1.00   Min.   :   0.0  
+ yes:246   1st Qu.:46.00   Post:396   1st Qu.: 20.00   II :444   1st Qu.: 1.00   1st Qu.:   7.0  
+           Median :53.00              Median : 25.00   III:161   Median : 3.00   Median :  32.5  
+           Mean   :53.05              Mean   : 29.33             Mean   : 5.01   Mean   : 110.0  
+           3rd Qu.:61.00              3rd Qu.: 35.00             3rd Qu.: 7.00   3rd Qu.: 131.8  
+           Max.   :80.00              Max.   :120.00             Max.   :51.00   Max.   :2380.0  
+     estrec             time             cens       
+ Min.   :   0.00   Min.   :   8.0   Min.   :0.0000  
+ 1st Qu.:   8.00   1st Qu.: 567.8   1st Qu.:0.0000  
+ Median :  36.00   Median :1084.0   Median :0.0000  
+ Mean   :  96.25   Mean   :1124.5   Mean   :0.4359  
+ 3rd Qu.: 114.00   3rd Qu.:1684.8   3rd Qu.:1.0000  
+ Max.   :1144.00   Max.   :2659.0   Max.   :1.0000  
+Call:
+coxph(formula = Surv(time, cens) ~ horTh, data = df)
+
+  n= 686, number of events= 299 
+
+            coef exp(coef) se(coef)      z Pr(>|z|)   
+horThyes -0.3640    0.6949   0.1250 -2.911   0.0036 **
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+         exp(coef) exp(-coef) lower .95 upper .95
+horThyes    0.6949      1.439    0.5438    0.8879
+
+Concordance= 0.543  (se = 0.014 )
+Likelihood ratio test= 8.82  on 1 df,   p=0.003
+Wald test            = 8.47  on 1 df,   p=0.004
+Score (logrank) test = 8.57  on 1 df,   p=0.003
+
+Call:
+coxph(formula = Surv(time, cens) ~ age + horTh + tgrade + menostat, 
+    data = df)
+
+  n= 686, number of events= 299 
+
+                  coef exp(coef)  se(coef)      z Pr(>|z|)    
+age          -0.011998  0.988073  0.009043 -1.327  0.18458    
+horThyes     -0.361421  0.696686  0.128990 -2.802  0.00508 ** 
+tgrade.L      0.785163  2.192763  0.185205  4.239 2.24e-05 ***
+tgrade.Q     -0.247479  0.780767  0.121365 -2.039  0.04144 *  
+menostatPost  0.324505  1.383345  0.180615  1.797  0.07239 .  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+             exp(coef) exp(-coef) lower .95 upper .95
+age             0.9881     1.0121    0.9707    1.0057
+horThyes        0.6967     1.4354    0.5411    0.8971
+tgrade.L        2.1928     0.4560    1.5253    3.1524
+tgrade.Q        0.7808     1.2808    0.6155    0.9904
+menostatPost    1.3833     0.7229    0.9709    1.9709
+
+Concordance= 0.605  (se = 0.017 )
+Likelihood ratio test= 35.09  on 5 df,   p=1e-06
+Wald test            = 30.29  on 5 df,   p=1e-05
+Score (logrank) test = 31.73  on 5 df,   p=7e-06
+
+          chisq df      p
+age       7.609  1 0.0058
+horTh     0.209  1 0.6478
+tgrade   12.937  2 0.0016
+menostat  5.158  1 0.0231
+GLOBAL   19.988  5 0.0013
+'data.frame':	686 obs. of  10 variables:
+ $ horTh   : Factor w/ 2 levels "no","yes": 1 2 2 2 1 1 2 1 1 1 ...
+ $ age     : int  70 56 58 59 73 32 59 65 80 66 ...
+ $ menostat: Factor w/ 2 levels "Pre","Post": 2 2 2 2 2 1 2 2 2 2 ...
+ $ tsize   : int  21 12 35 17 35 57 8 16 39 18 ...
+ $ tgrade  : Ord.factor w/ 3 levels "I"<"II"<"III": 2 2 2 2 2 3 2 2 2 2 ...
+ $ pnodes  : int  3 7 9 4 1 24 2 1 30 7 ...
+ $ progrec : int  48 61 52 60 26 0 181 192 0 0 ...
+ $ estrec  : int  66 77 271 29 65 13 0 25 59 3 ...
+ $ time    : int  1814 2018 712 1807 772 448 2172 2161 471 2014 ...
+ $ cens    : int  1 1 1 1 1 1 0 0 1 0 ...
+ horTh          age        menostat       tsize        tgrade        pnodes         progrec      
+ no :440   Min.   :21.00   Pre :290   Min.   :  3.00   I  : 81   Min.   : 1.00   Min.   :   0.0  
+ yes:246   1st Qu.:46.00   Post:396   1st Qu.: 20.00   II :444   1st Qu.: 1.00   1st Qu.:   7.0  
+           Median :53.00              Median : 25.00   III:161   Median : 3.00   Median :  32.5  
+           Mean   :53.05              Mean   : 29.33             Mean   : 5.01   Mean   : 110.0  
+           3rd Qu.:61.00              3rd Qu.: 35.00             3rd Qu.: 7.00   3rd Qu.: 131.8  
+           Max.   :80.00              Max.   :120.00             Max.   :51.00   Max.   :2380.0  
+     estrec             time             cens       
+ Min.   :   0.00   Min.   :   8.0   Min.   :0.0000  
+ 1st Qu.:   8.00   1st Qu.: 567.8   1st Qu.:0.0000  
+ Median :  36.00   Median :1084.0   Median :0.0000  
+ Mean   :  96.25   Mean   :1124.5   Mean   :0.4359  
+ 3rd Qu.: 114.00   3rd Qu.:1684.8   3rd Qu.:1.0000  
+ Max.   :1144.00   Max.   :2659.0   Max.   :1.0000  
+Call:
+survdiff(formula = Surv(time, cens) ~ horTh, data = df)
+
+            N Observed Expected (O-E)^2/E (O-E)^2/V
+horTh=no  440      205      180      3.37      8.56
+horTh=yes 246       94      119      5.12      8.56
+
+ Chisq= 8.6  on 1 degrees of freedom, p= 0.003 
+
+P-value =  0.003427282Call:
+coxph(formula = Surv(time, cens) ~ horTh, data = df)
+
+  n= 686, number of events= 299 
+
+            coef exp(coef) se(coef)      z Pr(>|z|)   
+horThyes -0.3640    0.6949   0.1250 -2.911   0.0036 **
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+         exp(coef) exp(-coef) lower .95 upper .95
+horThyes    0.6949      1.439    0.5438    0.8879
+
+Concordance= 0.543  (se = 0.014 )
+Likelihood ratio test= 8.82  on 1 df,   p=0.003
+Wald test            = 8.47  on 1 df,   p=0.004
+Score (logrank) test = 8.57  on 1 df,   p=0.003
+
+Call:
+coxph(formula = Surv(time, cens) ~ age + horTh + tgrade + menostat, 
+    data = df)
+
+  n= 686, number of events= 299 
+
+                  coef exp(coef)  se(coef)      z Pr(>|z|)    
+age          -0.011998  0.988073  0.009043 -1.327  0.18458    
+horThyes     -0.361421  0.696686  0.128990 -2.802  0.00508 ** 
+tgrade.L      0.785163  2.192763  0.185205  4.239 2.24e-05 ***
+tgrade.Q     -0.247479  0.780767  0.121365 -2.039  0.04144 *  
+menostatPost  0.324505  1.383345  0.180615  1.797  0.07239 .  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+             exp(coef) exp(-coef) lower .95 upper .95
+age             0.9881     1.0121    0.9707    1.0057
+horThyes        0.6967     1.4354    0.5411    0.8971
+tgrade.L        2.1928     0.4560    1.5253    3.1524
+tgrade.Q        0.7808     1.2808    0.6155    0.9904
+menostatPost    1.3833     0.7229    0.9709    1.9709
+
+Concordance= 0.605  (se = 0.017 )
+Likelihood ratio test= 35.09  on 5 df,   p=1e-06
+Wald test            = 30.29  on 5 df,   p=1e-05
+Score (logrank) test = 31.73  on 5 df,   p=7e-06
+
+          chisq df      p
+age       7.609  1 0.0058
+horTh     0.209  1 0.6478
+tgrade   12.937  2 0.0016
+menostat  5.158  1 0.0231
+GLOBAL   19.988  5 0.0013
+Call:
+survdiff(formula = Surv(time, cens) ~ horTh, data = df)
+
+            N Observed Expected (O-E)^2/E (O-E)^2/V
+horTh=no  440      205      180      3.37      8.56
+horTh=yes 246       94      119      5.12      8.56
+
+ Chisq= 8.6  on 1 degrees of freedom, p= 0.003 
+Call:
+survdiff(formula = Surv(time, cens) ~ horTh, data = df)
+
+            N Observed Expected (O-E)^2/E (O-E)^2/V
+horTh=no  440      205      180      3.37      8.56
+horTh=yes 246       94      119      5.12      8.56
+
+ Chisq= 8.6  on 1 degrees of freedom, p= 0.003 
+Call:
+survdiff(formula = Surv(time, cens) ~ horTh, data = df)
+
+            N Observed Expected (O-E)^2/E (O-E)^2/V
+horTh=no  440      205      180      3.37      8.56
+horTh=yes 246       94      119      5.12      8.56
+
+ Chisq= 8.6  on 1 degrees of freedom, p= 0.003 
+Call:
+survdiff(formula = Surv(time, cens) ~ horTh, data = df)
+
+            N Observed Expected (O-E)^2/E (O-E)^2/V
+horTh=no  440      205      180      3.37      8.56
+horTh=yes 246       94      119      5.12      8.56
+
+ Chisq= 8.6  on 1 degrees of freedom, p= 0.003 
+Call:
+survdiff(formula = Surv(time, cens) ~ horTh, data = df)
+
+            N Observed Expected (O-E)^2/E (O-E)^2/V
+horTh=no  440      205      180      3.37      8.56
+horTh=yes 246       94      119      5.12      8.56
+
+ Chisq= 8.6  on 1 degrees of freedom, p= 0.003 
+Call:
+survdiff(formula = Surv(time, cens) ~ horTh, data = df)
+
+            N Observed Expected (O-E)^2/E (O-E)^2/V
+horTh=no  440      205      180      3.37      8.56
+horTh=yes 246       94      119      5.12      8.56
+
+ Chisq= 8.6  on 1 degrees of freedom, p= 0.003 
+Call:
+survdiff(formula = Surv(time, cens) ~ horTh, data = df)
+
+            N Observed Expected (O-E)^2/E (O-E)^2/V
+horTh=no  440      205      180      3.37      8.56
+horTh=yes 246       94      119      5.12      8.56
+
+ Chisq= 8.6  on 1 degrees of freedom, p= 0.003 
+
+P-value =  0.003427282Call:
+survdiff(formula = Surv(time, cens) ~ horTh, data = df)
+
+            N Observed Expected (O-E)^2/E (O-E)^2/V
+horTh=no  440      205      180      3.37      8.56
+horTh=yes 246       94      119      5.12      8.56
+
+ Chisq= 8.6  on 1 degrees of freedom, p= 0.003 
+
+P-value =  0.003427282Call:
+survdiff(formula = Surv(time, cens) ~ horTh, data = df)
+
+            N Observed Expected (O-E)^2/E (O-E)^2/V
+horTh=no  440      205      180      3.37      8.56
+horTh=yes 246       94      119      5.12      8.56
+
+ Chisq= 8.6  on 1 degrees of freedom, p= 0.003 
+Call:
+survdiff(formula = Surv(time, cens) ~ horTh, data = df)
+
+            N Observed Expected (O-E)^2/E (O-E)^2/V
+horTh=no  440      205      180      3.37      8.56
+horTh=yes 246       94      119      5.12      8.56
+
+ Chisq= 8.6  on 1 degrees of freedom, p= 0.003 
+Call:
+survdiff(formula = Surv(time, cens) ~ horTh, data = df)
+
+            N Observed Expected (O-E)^2/E (O-E)^2/V
+horTh=no  440      205      180      3.37      8.56
+horTh=yes 246       94      119      5.12      8.56
+
+ Chisq= 8.6  on 1 degrees of freedom, p= 0.003 
+'data.frame':	686 obs. of  10 variables:
+ $ horTh   : Factor w/ 2 levels "no","yes": 1 2 2 2 1 1 2 1 1 1 ...
+ $ age     : int  70 56 58 59 73 32 59 65 80 66 ...
+ $ menostat: Factor w/ 2 levels "Pre","Post": 2 2 2 2 2 1 2 2 2 2 ...
+ $ tsize   : int  21 12 35 17 35 57 8 16 39 18 ...
+ $ tgrade  : Ord.factor w/ 3 levels "I"<"II"<"III": 2 2 2 2 2 3 2 2 2 2 ...
+ $ pnodes  : int  3 7 9 4 1 24 2 1 30 7 ...
+ $ progrec : int  48 61 52 60 26 0 181 192 0 0 ...
+ $ estrec  : int  66 77 271 29 65 13 0 25 59 3 ...
+ $ time    : int  1814 2018 712 1807 772 448 2172 2161 471 2014 ...
+ $ cens    : int  1 1 1 1 1 1 0 0 1 0 ...
+ horTh          age        menostat       tsize        tgrade        pnodes         progrec      
+ no :440   Min.   :21.00   Pre :290   Min.   :  3.00   I  : 81   Min.   : 1.00   Min.   :   0.0  
+ yes:246   1st Qu.:46.00   Post:396   1st Qu.: 20.00   II :444   1st Qu.: 1.00   1st Qu.:   7.0  
+           Median :53.00              Median : 25.00   III:161   Median : 3.00   Median :  32.5  
+           Mean   :53.05              Mean   : 29.33             Mean   : 5.01   Mean   : 110.0  
+           3rd Qu.:61.00              3rd Qu.: 35.00             3rd Qu.: 7.00   3rd Qu.: 131.8  
+           Max.   :80.00              Max.   :120.00             Max.   :51.00   Max.   :2380.0  
+     estrec             time             cens       
+ Min.   :   0.00   Min.   :   8.0   Min.   :0.0000  
+ 1st Qu.:   8.00   1st Qu.: 567.8   1st Qu.:0.0000  
+ Median :  36.00   Median :1084.0   Median :0.0000  
+ Mean   :  96.25   Mean   :1124.5   Mean   :0.4359  
+ 3rd Qu.: 114.00   3rd Qu.:1684.8   3rd Qu.:1.0000  
+ Max.   :1144.00   Max.   :2659.0   Max.   :1.0000  
+ horTh          age        menostat       tsize        tgrade        pnodes         progrec      
+ no :440   Min.   :21.00   Pre :290   Min.   :  3.00   I  : 81   Min.   : 1.00   Min.   :   0.0  
+ yes:246   1st Qu.:46.00   Post:396   1st Qu.: 20.00   II :444   1st Qu.: 1.00   1st Qu.:   7.0  
+           Median :53.00              Median : 25.00   III:161   Median : 3.00   Median :  32.5  
+           Mean   :53.05              Mean   : 29.33             Mean   : 5.01   Mean   : 110.0  
+           3rd Qu.:61.00              3rd Qu.: 35.00             3rd Qu.: 7.00   3rd Qu.: 131.8  
+           Max.   :80.00              Max.   :120.00             Max.   :51.00   Max.   :2380.0  
+     estrec             time             cens       
+ Min.   :   0.00   Min.   :   8.0   Min.   :0.0000  
+ 1st Qu.:   8.00   1st Qu.: 567.8   1st Qu.:0.0000  
+ Median :  36.00   Median :1084.0   Median :0.0000  
+ Mean   :  96.25   Mean   :1124.5   Mean   :0.4359  
+ 3rd Qu.: 114.00   3rd Qu.:1684.8   3rd Qu.:1.0000  
+ Max.   :1144.00   Max.   :2659.0   Max.   :1.0000  

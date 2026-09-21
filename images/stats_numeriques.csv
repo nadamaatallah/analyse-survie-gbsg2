@@ -1,0 +1,7 @@
+"","     age","    tsize","    pnodes","   progrec","    estrec","     time"
+"","Min.   :21.00  ","Min.   :  3.00  ","Min.   : 1.00  ","Min.   :   0.0  ","Min.   :   0.00  ","Min.   :   8.0  "
+"","1st Qu.:46.00  ","1st Qu.: 20.00  ","1st Qu.: 1.00  ","1st Qu.:   7.0  ","1st Qu.:   8.00  ","1st Qu.: 567.8  "
+"","Median :53.00  ","Median : 25.00  ","Median : 3.00  ","Median :  32.5  ","Median :  36.00  ","Median :1084.0  "
+"","Mean   :53.05  ","Mean   : 29.33  ","Mean   : 5.01  ","Mean   : 110.0  ","Mean   :  96.25  ","Mean   :1124.5  "
+"","3rd Qu.:61.00  ","3rd Qu.: 35.00  ","3rd Qu.: 7.00  ","3rd Qu.: 131.8  ","3rd Qu.: 114.00  ","3rd Qu.:1684.8  "
+"","Max.   :80.00  ","Max.   :120.00  ","Max.   :51.00  ","Max.   :2380.0  ","Max.   :1144.00  ","Max.   :2659.0  "

@@ -1,0 +1,6 @@
+          chisq df      p
+age       7.609  1 0.0058
+horTh     0.209  1 0.6478
+tgrade   12.937  2 0.0016
+menostat  5.158  1 0.0231
+GLOBAL   19.988  5 0.0013
